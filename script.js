@@ -37,3 +37,19 @@ window.addEventListener("keydown", function(event) { // Listens for keydown even
 // function as expected. There are many ways to accomplish this task, but you will need
 // to at minimum add listeners to each link and toggle the display of the tab contents.
 // Hint: display: none; hides an element, and display: block; will bring it
+function switchTab(event, tabID) { // Function to handle tab switching
+    event.preventDefault(); // prevent default behavior
+    document.querySelectorAll("#tabbed-contents > div").forEach(div => div.classList.add("hidden")); // Hides all tabs
+    document.getElementById(tabId).classList.remove("hidden"); // Shows selected tab
+}
+
+// Add event listeners to the tab links
+document.getElementById("tab1Link").addEventListener("click", function(event) {
+    switchTab(event, "tab1");
+});
+document.getElementById("tab2Link").addEventListener("click", function(event) {
+    switchTab(event, "tab2");
+});
+document.getElementById("tab3Link").addEventListener("click", function(event) {
+    switchTab(event, "tab3");
+});
