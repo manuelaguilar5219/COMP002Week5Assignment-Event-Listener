@@ -15,9 +15,15 @@ let balloon = document.getElementById("balloon"); // Get the ballon element
 let currentSize = 50; // Current size is set to 50
 balloon.style.fontsize = currentSize + "px" // Applies the value of currentSize (50 pixels) to the fontSize of the balloon element
 
+const maxSize = 150; // Maximum size before explosion
+
 window.addEventListener("keydown", function(event) { // Listens for keydown events (when a key is pressed)
     if (event.key === "ArrowUp") { // This line checks if the key that was pressed is the "ArrowUp" key.
         currentSize *= 1.10; // Increase size by 10%
+        if (currentSize > maxSize) { // Checks if the current size exceeds the maxSize
+            balloon.textContent = "💥"; // Replaces balloon emoji with explosion emoji if currentSize exceeds maxSize
+            this.window.removeEventListener("keydown", arguments.callee); // Event handler is removed (so that you can’t inflate or deflate the explosion).
+        }
     } else if (event.key === "ArrowDown") { // This line checks if the key that was pressed is the "ArrowDown" key.
         currentSize *= 0.90; // Decrease size by 10%
     }
