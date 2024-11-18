@@ -11,7 +11,19 @@
 // Hint: keeping track of the size in percentage might be easier.
 // Hint: Make sure you quote the emoji characters. They are strings, after all.
 // Hint: document.getElementById("balloon") will get the balloon element on the page.
+let balloon = document.getElementById("balloon"); // Get the ballon element
+let currentSize = 50; // Current size is set to 50
+balloon.style.fontsize = currentSize + "px" // Applies the value of currentSize (50 pixels) to the fontSize of the balloon element
 
+window.addEventListener("keydown", function(event) { // Listens for keydown events (when a key is pressed)
+    if (event.key === "ArrowUp") { // This line checks if the key that was pressed is the "ArrowUp" key.
+        currentSize *= 1.10; // Increase size by 10%
+    } else if (event.key === "ArrowDown") { // This line checks if the key that was pressed is the "ArrowDown" key.
+        currentSize *= 0.90; // Decrease size by 10%
+    }
+    balloon.style.fontSize = currentSize + "px"; // This line updates the font size of the balloon element to the new value of currentSize
+    event.preventDefault(); // This line makes sure that the keys change only the balloon, without scrolling the page.
+});
 // 2. The index.html page has a tabbed layout. Make the default state of the layout show
 // the first tab, and make it so that when you click the links at the top the correct
 // tab's contents are displayed and the others are hidden. Prevent the default action of
